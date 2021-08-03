@@ -38,7 +38,21 @@ function seedUsers() {
 
         ]
     })
-    mariam.save();
+    let razan = new UserModal({
+        email: 'quraanrazan282@gmail.com ',
+        colors: [
+            {
+                title: 'Black',
+                imageUrl: 'http://www.colourlovers.com/img/000000/100/100/Black.png'
+            },
+            {
+                title: 'dutch teal',
+                imageUrl: 'http://www.colourlovers.com/img/1693A5/100/100/dutch_teal.png'
+            }
+
+        ]
+    })
+    razan.save();
 }
 seedUsers();
 
@@ -105,27 +119,27 @@ function deletehandler(req,res){
             res.send(userData[0].colors)
         }
     })}
-    server.put('/deletecolor', deletehandler) 
+    // server.put('/updatcolors', updatcolors) 
 
-    function updatcolors(req,res){
-        let {userEmail,title,imageUrl} = req.body;
-        let colorid=Number(req.query.index)
-        UserModal.find({ email: userEmail }, (error, userData) => {
-            if (error) {
-                res.send('error')
-            }
-             else {
-                let newcolors=userData[0].colors.filter((item,index)=>{
-                    if(index!== colorid){return item}
-                })
+    // function updatcolors(req,res){
+    //     let {userEmail,title,imageUrl} = req.body;
+    //     let colorid=Number(req.query.index)
+    //     UserModal.find({ email: userEmail }, (error, userData) => {
+    //         if (error) {
+    //             res.send('error')
+    //         }
+    //          else {
+    //             let newcolors=userData[0].colors.filter((item,index)=>{
+    //                 if(index!== colorid){return item}
+    //             })
     
-                userData[0].colors=newcolors
+    //             userData[0].colors=newcolors
                 
-                userData[0].save();
-                res.send(userData[0].colors)
-            }
-        })}
-    }
+    //             userData[0].save();
+    //             res.send(userData[0].colors)
+    //         }
+    //     })}
+    // }
 
 
 
